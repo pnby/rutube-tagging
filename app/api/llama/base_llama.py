@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 
-from app.constans import available_models
+from app.utils.settings import available_models
 
 
 class BaseLlama(ABC):

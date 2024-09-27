@@ -3,7 +3,7 @@ from typing import override
 import aiohttp
 
 from app.api.llama.base_llama import BaseLlama
-from app.constans import available_models
+from app.utils.settings import available_models
 
 
 class Llama(BaseLlama):

@@ -20,6 +20,7 @@ services:
     ports:
       - "80:80"
       - "443:443"
+      - "8000:8000"
     build:
       context: .
       dockerfile: Dockerfile
@@ -27,7 +28,7 @@ services:
       - "1.1.1.1"
     depends_on:
       - ollama
-    command: [ "/bin/sh", "-c", "python3 -m app.main" ]
+    command: [ "/bin/sh", "-c", "uvicorn app.__main__:app --host 0.0.0.0 --port 8000" ]
     networks:
       - general
 

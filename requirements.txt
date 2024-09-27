@@ -1,1 +1,13 @@
 aiohttp~=3.10.6
+python-ffmpeg
+typing_extensions~=4.12.2
+fastapi~=0.115.0
+python-multipart
+uvicorn
+python-ffmpeg
+aiosubprocess~=2021.5.3
+starlette~=0.38.5
+ffmpeg-python~=0.2.0
+watchfiles~=0.24.0
+attrs~=24.2.0
+aiofiles~=24.1.0
