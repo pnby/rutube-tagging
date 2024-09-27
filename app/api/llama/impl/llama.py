@@ -1,11 +1,13 @@
-from typing import Literal, override
+from typing import override
 
 import aiohttp
 
 from app.api.llama.base_llama import BaseLlama
+from app.constans import available_models
+
 
 class Llama(BaseLlama):
-    def __init__(self, prompt: str, model: Literal["llama3:8b"] = "llama3:8b",
+    def __init__(self, prompt: str, model: available_models = "llama3:8b",
                  stream: bool = False, endpoint: str = "http://ollama:11434/api/generate"):
         """
         Initialize the Llama class.

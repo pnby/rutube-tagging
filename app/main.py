@@ -14,4 +14,5 @@ async def main():
     print(response)
 
 if __name__ == '__main__':
+    # the entry point to the program
     asyncio.run(main())

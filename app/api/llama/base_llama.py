@@ -1,8 +1,10 @@
 from abc import ABC, abstractmethod
-from typing import Literal
+
+from app.constans import available_models
+
 
 class BaseLlama(ABC):
-    def __init__(self, prompt: str, model: Literal["llama3:8b"] = "llama3:8b",
+    def __init__(self, prompt: str, model: available_models = "llama3:8b",
                  stream: bool = False, endpoint: str = "http://ollama:11434/api/generate"):
         """
         Initialize the BaseLlama class.
