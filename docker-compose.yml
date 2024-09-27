@@ -1,0 +1,38 @@
+services:
+  ollama:
+    image: arminhendian/ollama-with-llama3
+    expose:
+      - 11434/tcp
+    runtime: nvidia
+    ports:
+      - "11434:11434"
+    healthcheck:
+      test: llama --version
+    entrypoint: /root/entrypoint.sh
+    volumes:
+      - ./llama:/root/.llama
+      - ./entrypoint.sh:/root/entrypoint.sh
+    networks:
+      - general
+
+  solution:
+    container_name: solution
+    ports:
+      - "80:80"
+      - "443:443"
+    build:
+      context: .
+      dockerfile: Dockerfile
+    dns:
+      - "1.1.1.1"
+    depends_on:
+      - ollama
+    command: [ "/bin/sh", "-c", "python3 -m app.main" ]
+    networks:
+      - general
+
+
+
+networks:
+  general:
+    driver: bridge
