@@ -1,6 +1,6 @@
 services:
   ollama:
-    image: langchain4j/langchain4j/ollama-mistral
+    image: codalabrunner/mistral
     expose:
       - 11434/tcp
     runtime: nvidia
