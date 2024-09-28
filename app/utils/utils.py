@@ -35,9 +35,3 @@ def generate_text(prompt, model_name="sberbank-ai/rugpt3large_based_on_gpt2", ma
 
     return generated_texts
 
-
-prompt = "У меня есть такой набор строк. sad das gk ddd, сформируй из него JSON"
-generated_text = generate_text(prompt, max_length=150, num_return_sequences=2)
-
-for i, text in enumerate(generated_text, 1):
-    print(f"Вариант {i}:\n{text}\n")

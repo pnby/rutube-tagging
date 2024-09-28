@@ -18,18 +18,6 @@ class Prompt:
         self.text = text
 
     @staticmethod
-    def get_system_prompt() -> str:
-        """
-        Generates the system prompt by loading a template and appending available tags.
-
-        Returns:
-            str: The system prompt with available tags.
-        """
-        prompt = "Your task is to assign tags to the following text and return the response in JSON format without comments and explanations. The output of the tags must match the content of the text"
-        prompt += "\nResponse format: {'tags': [...]}"
-        return prompt
-
-    @staticmethod
     def get_tags() -> str:
         """
         Retrieves the available tags from a file.
@@ -55,7 +43,9 @@ class Prompt:
             str: The user prompt with the input text and expected response format.
         """
         final_prompt = f"""\n
-        Target text: {self.text}
-        prompt += f"\nThe set of tags is here, pay attention: {self.get_tags()}\nA set of tags is a file formatted in the format .csv"
+        Your task is to assign tags to the following text and return the response in JSON format without comments and explanations. The output of the tags must match the content of the text
+        \nResponse format: {'tags': [...]}
+        \nTarget text: {self.text}
+        \nThe set of tags is here, pay attention: {self.get_tags()}
         """
         return final_prompt
