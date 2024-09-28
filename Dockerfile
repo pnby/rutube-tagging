@@ -15,6 +15,10 @@ RUN curl -O https://www.python.org/ftp/python/3.12.5/Python-3.12.5.tgz && \
     cd .. && \
     rm -rf Python-3.12.5.tgz Python-3.12.5
 
+RUN apt-get update && \
+    apt-get install -y ffmpeg && \
+    rm -rf /var/lib/apt/lists/*
+
 WORKDIR /
 
 COPY requirements.txt requirements.txt
