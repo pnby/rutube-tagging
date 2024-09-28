@@ -1,5 +1,7 @@
 FROM nvidia/cuda:11.8.0-cudnn8-devel-ubuntu20.04
 
+ENV DEBIAN_FRONTEND=noninteractive
+
 RUN apt-get update && \
     apt-get install -y build-essential libssl-dev zlib1g-dev \
                        libncurses5-dev libgdbm-dev libnss3-dev \
