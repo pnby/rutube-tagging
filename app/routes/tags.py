@@ -11,13 +11,30 @@ from app.utils.settings import ALLOWED_VIDEO_TYPES
 
 router = APIRouter()
 
-@router.post("/tags/all/")
+@router.post("/tags/all/", summary="Get all tags", description="Endpoint to retrieve all tags.")
 async def get_all_tags():
+    """
+    Retrieves all tags.
+
+    Returns:
+        dict: A dictionary containing all tags.
+    """
     return
 
-
-@router.post("/tags/json/")
+@router.post("/tags/media/", summary="Extract tags from media file", description="Endpoint to extract tags from a media file.")
 async def text_to_tags(file: UploadFile = File(...)):
+    """
+    Extracts tags from a media file.
+
+    Args:
+        file (UploadFile): The media file to be processed.
+
+    Returns:
+        dict: A dictionary containing the extracted tags.
+
+    Raises:
+        HTTPException: If the file format is invalid.
+    """
     if file.content_type not in ALLOWED_VIDEO_TYPES:
         raise HTTPException(status_code=400, detail="Invalid file format. Please upload the video.")
 

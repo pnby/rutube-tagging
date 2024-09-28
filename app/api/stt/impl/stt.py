@@ -19,6 +19,11 @@ class SpeechToText(BaseSpeechToText):
 
     @override
     async def transcribe(self) -> str:
+        """
+        Transcribe the audio content from the input file.
+
+        :return: Transcribed text as a string.
+        """
         if not self.__audio_extracted:
             await self.extract_audio_from_video()
 
@@ -36,6 +41,11 @@ class SpeechToText(BaseSpeechToText):
 
     @override
     async def extract_audio_from_video(self) -> None:
+        """
+        Extract audio from the input video file.
+
+        :return: None
+        """
         wav_file = os.path.splitext(self.input_file)[0] + '.wav'
         ffmpeg = (
             FFmpeg()
