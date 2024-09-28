@@ -41,7 +41,7 @@ class Ollama(BaseOllama):
             "raw": True,
             "format": "json",
             "options": {
-                "temperature": 0
+                "temperature": 0.05
             },
         }
 
