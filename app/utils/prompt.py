@@ -25,8 +25,7 @@ class Prompt:
             str: The system prompt with available tags.
         """
 
-        tags = self.get_tags()
-        prompt = "Your task is to assign tags to the following text and return the response in JSON format without comments and explanations. The output of the tags must match the content of the text"
+        prompt = "Before displaying a certain tag, you need to check the entire text for the presence of a microtheme about this tag, or an explicit meaning or the same tag. Your task is to assign tags to the following text and return the response in JSON format without comments and explanations. The output of the tags must match the content of the text."
         prompt += "\nResponse format: {'tags': [...]}"
         return prompt
 
