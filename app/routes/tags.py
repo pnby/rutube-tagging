@@ -52,7 +52,7 @@ async def text_to_tags(file: UploadFile = File(...)):
     # stt = SpeechToText(input_file=file_location, model="small")
     # text = await stt.transcribe()
 
-    prompt = Prompt("")
+    prompt = Prompt(" ")
     logger.debug(f"\nSYSTEM PROMPT: {prompt.get_system_prompt()}\nUSER PROMPT: {prompt.get_user_prompt()}")
 
     llama = Ollama(prompt.get_user_prompt(), system_prompt=prompt.get_system_prompt())

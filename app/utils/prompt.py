@@ -2,13 +2,6 @@ from app import logger
 from app.utils.settings import MODE
 
 class Prompt:
-    """
-    A class to generate prompts for text processing.
-
-    Attributes:
-        text (str): The input text to be processed.
-    """
-
     def __init__(self, text: str):
         """
         Initializes the Prompt class with the input text.
@@ -27,7 +20,7 @@ class Prompt:
         """
         # prompt = "Your task is to assign tags to the following text and return the response in JSON format without comments and explanations. The output of the tags must match the content of the text"
         # prompt += "\nResponse format: {'tags': [...]}"
-        return prompt
+        return None
 
     @staticmethod
     def get_tags() -> str:
@@ -56,7 +49,7 @@ class Prompt:
         """
         text = {"target_text": f"{self.text}"}
         final_prompt = f"""
-        Тебе нужно рассказать что происходит в этом тексте, детально
+        Тебе нужно расскать что происходит в этом 
         \n{text}
         # \nThe set of tags is here, pay attention: {self.get_tags()}"
         """
