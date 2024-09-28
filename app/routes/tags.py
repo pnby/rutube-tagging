@@ -73,5 +73,5 @@ async def text_to_tags(file: UploadFile = File(...)) -> TagSchema:
     total_words = len(words)
     occurrences_percentage = (count_matching_words / total_words) * 100 if total_words > 0 else 0
 
-    return TagSchema(tags=tags, occurrences=occurrences_percentage)
+    return TagSchema(tags=response_text, occurrences=occurrences_percentage)
 
