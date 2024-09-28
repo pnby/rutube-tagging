@@ -65,7 +65,7 @@ async def text_to_tags(file: UploadFile = File(...)) -> TagSchema:
         logger.warning(f"The LLM response could not be converted to json\n{e}\n{formatted_response}")
     response_text = formatted_response.get('tags', '')
 
-    words = response_text.split()
+    words = response_text
 
     matching_words = [word for word in words if word in tags]
     count_matching_words = len(matching_words)
