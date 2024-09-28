@@ -65,7 +65,7 @@ class Prompt:
         """
         final_prompt = f"""
         Your task is to assign tags to the following text and return the response in JSON format without comments and explanations. The tags you return should match the tags from the set of available tags and should be directly relevant to the content of the text. Do not generate tags that are not explicitly mentioned or implied by the text.
-        You have to explain why you chose these tags.
+        
         Target text: {self.text}
         """
         return final_prompt
