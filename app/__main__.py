@@ -5,7 +5,7 @@ from fastapi import FastAPI
 from app.routes.tags import router as tag_router
 
 logging.basicConfig(
-    level=logging.INFO,
+    level=logging.DEBUG,
     format="%(filename)s:%(lineno)d #%(levelname)-8s [%(asctime)s] - %(name)s - %(message)s",
 )
 
