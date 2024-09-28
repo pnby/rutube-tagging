@@ -1,3 +1,4 @@
+from app import logger
 from app.utils.settings import MODE
 
 class Prompt:
@@ -44,6 +45,7 @@ class Prompt:
         with open(path, mode='r', encoding='utf-8') as f:
             tags = f.read()
 
+        logger.debug(tags)
         return tags
 
     def get_user_prompt(self) -> str:
