@@ -28,7 +28,6 @@ class Prompt:
         tags = self.get_tags()
         prompt = ""
         prompt += "\nEnsure the output is valid JSON as it will be parsed using `json.loads()` in Python.\nResponse format: {'tags': [...]}"
-        prompt += f"\nAvailable tags:\n {tags}"
         return prompt
 
     @staticmethod
@@ -60,5 +59,7 @@ class Prompt:
         Your task is to assign tags to the following text and return the response in JSON format without comments and explanations. The tags you return should match the tags from the set of available tags and should be directly relevant to the content of the text. Do not generate tags that are not explicitly mentioned or implied by the text.
         
         Target text: {self.text}
+        
+        Target tags: {self.get_tags()}
         """
         return final_prompt
