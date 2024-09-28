@@ -25,8 +25,8 @@ class Prompt:
         Returns:
             str: The system prompt with available tags.
         """
-        prompt = "Your task is to assign tags to the following text and return the response in JSON format without comments and explanations. The output of the tags must match the content of the text"
-        prompt += "\nResponse format: {'tags': [...]}"
+        # prompt = "Your task is to assign tags to the following text and return the response in JSON format without comments and explanations. The output of the tags must match the content of the text"
+        # prompt += "\nResponse format: {'tags': [...]}"
         return prompt
 
     @staticmethod
@@ -45,7 +45,6 @@ class Prompt:
         with open(path, mode='r', encoding='utf-8') as f:
             tags = f.read()
 
-        logger.debug(tags)
         return tags
 
     def get_user_prompt(self) -> str:
@@ -57,7 +56,8 @@ class Prompt:
         """
         text = {"target_text": f"{self.text}"}
         final_prompt = f"""
+        Тебе нужно расскать что происходит в этом тексте, детально
         \n{text}
-        \nThe set of tags is here, pay attention: {self.get_tags()}"
+        # \nThe set of tags is here, pay attention: {self.get_tags()}"
         """
         return final_prompt
