@@ -39,7 +39,7 @@ class Llama(BaseLlama):
             "prompt": self.prompt,
             "stream": self.stream,
             "options": {
-                "temperature": 0.4
+                "temperature": 0.3
             },
         }
 
