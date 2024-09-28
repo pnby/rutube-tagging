@@ -10,7 +10,7 @@ from app.utils.settings import available_llm_models
 
 @final
 class Ollama(BaseOllama):
-    def __init__(self, prompt: str, model: available_llm_models,
+    def __init__(self, prompt: str, model: available_llm_models = available_llm_models,
                  stream: bool = False, endpoint: str = "http://ollama:11434/api/generate",
                  system_prompt: Optional[str] = None):
         """
