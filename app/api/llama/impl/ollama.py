@@ -40,7 +40,7 @@ class Ollama(BaseOllama):
             "stream": self.stream,
             "format": "json",
             "options": {
-                "temperature": 0
+                "temperature": 0.5
             },
         }
 

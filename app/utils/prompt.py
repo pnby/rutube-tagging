@@ -34,8 +34,8 @@ class Prompt:
         tags = self.get_tags()
         with open(path, mode='r', encoding='utf-8') as f:
             data = json.load(f)
-            data['prompt'] += "Response format: {'tags': [...]}\nEnsure the output is valid JSON as it will be parsed using `json.loads()` in Python."
-            data['prompt'] += f"Available tags:\n {tags}"
+            data['prompt'] += "Формат ответа: {'tags': [...]}\nУбедись что вывод является валидным JSON и его можно спарсить с помощью `json.loads()` в Python."
+            data['prompt'] += f"Доступные тэги:\n {tags}"
             return data['prompt']
 
     @staticmethod
@@ -64,8 +64,8 @@ class Prompt:
             str: The user prompt with the input text and expected response format.
         """
         final_prompt = f"""
-        Your task is to assign tags to the following text and return the response in JSON format without comments and explanations. The tags you return should match the tags from the set of available tags and should be directly relevant to the content of the text. Do not generate tags that are not explicitly mentioned or implied by the text.
+        Ваша задача - присвоить теги следующему тексту и вернуть ответ в формате JSON без комментариев и пояснений. Возвращаемые вами теги должны соответствовать тегам из набора доступных тегов и иметь прямое отношение к содержанию текста. Не создавайте теги, которые явно не упоминаются или не подразумеваются в тексте.
         
-        Target text: {self.text}
+        Целевой текст: {self.text}
         """
         return final_prompt
