@@ -38,9 +38,9 @@ class Prompt:
             str: The available tags as a string.
         """
         if MODE == "DEV":
-            path = "/prompts/available_tags.txt"
+            path = "/prompts/available_tags.json"
         else:
-            path = "../prompts/available_tags.txt"
+            path = "../prompts/available_tags.json"
 
         with open(path, mode='r', encoding='utf-8') as f:
             tags = f.read()
@@ -57,6 +57,6 @@ class Prompt:
         """
         final_prompt = f"""\n
         Target text: {self.text}
-        prompt += f"\nThe set of tags is here, pay attention: {self.get_tags()}\nA set of tags is a file formatted in the format .csv"
+        \nThe set of tags is here, pay attention: {self.get_tags()}"
         """
         return final_prompt
