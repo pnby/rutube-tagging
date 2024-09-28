@@ -1,6 +1,6 @@
 services:
   ollama:
-    image: fenildocker/llama3-70b
+    image: langchain4j/ollama-phi
     expose:
       - 11434/tcp
     runtime: nvidia
