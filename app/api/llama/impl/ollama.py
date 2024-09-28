@@ -71,4 +71,5 @@ class Ollama(BaseOllama):
             str: The formatted response.
         """
         assert self.response is not None
+        logger.debug(self.response)
         return self.response['response']
