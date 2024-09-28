@@ -9,8 +9,8 @@ from app.utils.settings import available_llm_models
 
 
 @final
-class Ollama(BaseOllama):
-    def __init__(self, prompt: str, model: available_llm_models = available_llm_models,
+class OLlama(BaseOllama):
+    def __init__(self, prompt: str, model: available_llm_models = "llama3:8b",
                  stream: bool = False, endpoint: str = "http://ollama:11434/api/generate",
                  system_prompt: Optional[str] = None):
         """
@@ -38,9 +38,8 @@ class Ollama(BaseOllama):
             "model": self.model,
             "prompt": self.prompt,
             "stream": self.stream,
-            "format": "json",
             "options": {
-                "temperature": 0
+                "temperature": 0.2
             },
         }
 
