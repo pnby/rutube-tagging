@@ -6,6 +6,8 @@ RUN apt-get update && \
     apt-get install -y ffmpeg && \
     rm -rf /var/lib/apt/lists/*
 
+RUN pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu117
+
 COPY requirements.txt requirements.txt
 RUN pip install --no-cache-dir --upgrade -r requirements.txt
 RUN apt install nvidia-cuda-toolkit
