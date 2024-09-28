@@ -5,8 +5,8 @@ from typing import Optional
 from app.utils.settings import available_llm_models
 
 
-class BaseLlama(ABC):
-    def __init__(self, prompt: str, model: available_llm_models = "llama3:8b",
+class BaseOllama(ABC):
+    def __init__(self, prompt: str, model: available_llm_models = "mistral",
                  stream: bool = False, endpoint: str = "http://ollama:11434/api/generate",
                  system_prompt: Optional[str] = None):
         """

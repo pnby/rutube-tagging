@@ -4,9 +4,9 @@ import os
 from fastapi import APIRouter, HTTPException, File, UploadFile
 
 from app import upload_directory, logger
-from app.api.llama.impl.llama import Llama
+from app.api.llama.impl.ollama import Ollama
 from app.api.stt.impl.stt import SpeechToText
-from app.schemas.tags import TagSchema, TagRawSchema
+from app.schemas.tags import TagRawSchema
 from app.utils.prompt import Prompt
 from app.utils.settings import ALLOWED_VIDEO_TYPES
 
@@ -55,7 +55,7 @@ async def text_to_tags(file: UploadFile = File(...)):
     prompt = Prompt(text)
     logger.debug(f"\nSYSTEM PROMPT: {prompt.get_system_prompt()}\nUSER PROMPT: {prompt.get_user_prompt()}")
 
-    llama = Llama(prompt.get_user_prompt(), system_prompt=prompt.get_system_prompt())
+    llama = Ollama(prompt.get_user_prompt(), system_prompt=prompt.get_system_prompt())
     await llama.send_request()
 
     formatted_response = llama.get_formatted_response().replace("'", '"')

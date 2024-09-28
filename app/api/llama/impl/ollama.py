@@ -4,13 +4,13 @@ from typing import override, final, Optional
 import aiohttp
 
 from app import logger
-from app.api.llama.base_llama import BaseLlama
+from app.api.llama.base_ollama import BaseOllama
 from app.utils.settings import available_llm_models
 
 
 @final
-class Llama(BaseLlama):
-    def __init__(self, prompt: str, model: available_llm_models = "llama3:8b",
+class Ollama(BaseOllama):
+    def __init__(self, prompt: str, model: available_llm_models = "mistral",
                  stream: bool = False, endpoint: str = "http://ollama:11434/api/generate",
                  system_prompt: Optional[str] = None):
         """
