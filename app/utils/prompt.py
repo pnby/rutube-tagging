@@ -26,7 +26,7 @@ class Prompt:
         """
 
         tags = self.get_tags()
-        prompt = "Your task is to assign tags to the following text and return the response in JSON format without comments and explanations. The output of the tags must match the content of the text"
+        prompt = "You are provided with a text from a video and a large set of tags. Your task is to analyze the text for its main subjects and microthemes, and then match these with the most relevant tags from the provided set. Please sort the tags accordingly."
         prompt += "\nResponse format: {'tags': [...]}"
         prompt += f"\nThe set of tags is here, pay attention: {tags}\nA set of tags is a file formatted in the format .csv"
         return prompt
