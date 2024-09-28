@@ -49,7 +49,7 @@ async def text_to_tags(file: UploadFile = File(...)):
             buffer.write(chunk)
 
 
-    stt = SpeechToText(input_file=file_location, model="small")
+    stt = SpeechToText(input_file=file_location, model="base")
     text = await stt.transcribe()
 
     prompt = Prompt(text)

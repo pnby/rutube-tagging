@@ -25,7 +25,8 @@ class Prompt:
             str: The system prompt with available tags.
         """
 
-        prompt = "You are provided with a text from a video and a large set of tags. Your task is to analyze the text for its main subjects and microthemes, and then match these with the most relevant tags from the provided set. Please sort the tags accordingly."
+        tags = self.get_tags()
+        prompt = "Your task is to assign tags to the following text and return the response in JSON format without comments and explanations. The output of the tags must match the content of the text"
         prompt += "\nResponse format: {'tags': [...]}"
         return prompt
 
@@ -54,8 +55,8 @@ class Prompt:
         Returns:
             str: The user prompt with the input text and expected response format.
         """
-        tags = self.get_tags()
-        prompt = ""
-        prompt += f"\nThe set of tags is here: {tags}"
-        prompt += f"\nTarget text: {self.text}"
-        return prompt
+        final_prompt = f"""\n
+        Target text: {self.text}
+        prompt += f"\nThe set of tags is here, pay attention: {self.get_tags()}\nA set of tags is a file formatted in the format .csv"
+        """
+        return final_prompt
