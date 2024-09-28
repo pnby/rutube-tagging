@@ -1,6 +1,6 @@
 services:
   ollama:
-    image: arminhendian/ollama-with-llama3
+    image: langchain4j/ollama-llama2
     expose:
       - 11434/tcp
     runtime: nvidia

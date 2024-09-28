@@ -3,7 +3,7 @@ import os
 from typing_extensions import Literal
 
 # a constant that stores some data
-available_llm_models: Literal["llama3:8b"] = "llama3:8b"
+available_llm_models: Literal["llama2"] = "llama2"
 available_stt_models: Literal["base", "small"] = "small"
 available_stt_languages: Literal["ru"] = "ru"
 ALLOWED_VIDEO_TYPES = ["video/mp4", "video/x-matroska", "video/avi", "video/webm"]
