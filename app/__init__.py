@@ -1,8 +1,7 @@
-import asyncio
 import logging
 import os
-import subprocess
-import sys
+
+import torch
 
 logger = logging.getLogger(__name__)
 
@@ -20,4 +19,8 @@ def make_base_dirs() -> str:
 
     return upload_dir
 
+cuda_available = torch.cuda.is_available()
+torch.device("cuda" if cuda_available else "cpu")
+if not cuda_available:
+    logger.warning("Cuda cores are unavailable, switching to CPU")
 upload_directory = make_base_dirs()

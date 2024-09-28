@@ -33,7 +33,7 @@ class SpeechToText(BaseSpeechToText):
         start_time = perf_counter()
         model = whisper.load_model(self.model)
 
-        result = model.transcribe(self.wav_file, language=self.language, device="cuda")
+        result = model.transcribe(self.wav_file, language=self.language)
         for i in range(5):
             logger.info(f"The full transcription of the video took {perf_counter() - start_time}")
 
