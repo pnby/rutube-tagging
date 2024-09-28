@@ -1,11 +1,14 @@
 from abc import ABC, abstractmethod
 
-from app.utils.settings import available_models
+from typing import Optional
+
+from app.utils.settings import available_llm_models
 
 
 class BaseLlama(ABC):
-    def __init__(self, prompt: str, model: available_models = "llama3:8b",
-                 stream: bool = False, endpoint: str = "http://ollama:11434/api/generate"):
+    def __init__(self, prompt: str, model: available_llm_models = "llama3:8b",
+                 stream: bool = False, endpoint: str = "http://ollama:11434/api/generate",
+                 system_prompt: Optional[str] = None):
         """
         Initialize the BaseLlama class.
 
@@ -19,6 +22,7 @@ class BaseLlama(ABC):
         self.model = model
         self.stream = stream
         self.endpoint = endpoint
+        self.system_prompt = system_prompt
         self.response = None
 
     @abstractmethod

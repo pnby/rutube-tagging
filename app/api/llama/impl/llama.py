@@ -1,14 +1,17 @@
-from typing import override
+from typing import override, final, Optional
 
 import aiohttp
 
+from app import logger
 from app.api.llama.base_llama import BaseLlama
-from app.utils.settings import available_models
+from app.utils.settings import available_llm_models
 
 
+@final
 class Llama(BaseLlama):
-    def __init__(self, prompt: str, model: available_models = "llama3:8b",
-                 stream: bool = False, endpoint: str = "http://ollama:11434/api/generate"):
+    def __init__(self, prompt: str, model: available_llm_models = "llama3:8b",
+                 stream: bool = False, endpoint: str = "http://ollama:11434/api/generate",
+                 system_prompt: Optional[str] = None):
         """
         Initialize the Llama class.
 
@@ -18,7 +21,7 @@ class Llama(BaseLlama):
             stream (bool, optional): Whether to stream the response. Defaults to False.
             endpoint (str, optional): The API endpoint to send the request to. Defaults to "http://ollama:11434/api/generate".
         """
-        super().__init__(prompt=prompt, model=model, stream=stream, endpoint=endpoint)
+        super().__init__(prompt=prompt, model=model, stream=stream, endpoint=endpoint, system_prompt=system_prompt)
 
     @override
     async def send_request(self) -> None:
@@ -34,18 +37,23 @@ class Llama(BaseLlama):
             "prompt": self.prompt,
             "stream": self.stream,
             "options": {
-                "temperature": 0.3
+                "temperature": 0.2
             },
         }
+
+        if self.system_prompt is not None:
+            data["system"] = self.system_prompt
+
+        logger.debug(self.system_prompt)
 
         async with aiohttp.ClientSession() as session:
             async with session.post(url, json=data) as response:
                 if response.status == 200:
                     result = await response.json()
                     self.response = result
-                    print("Response from server:", result)
+                    logger.info("Response from server:", result)
                 else:
-                    print(f"Error: {response.status}\n{await response.json()}")
+                    logger.warning(f"Error: {response.status}\n{await response.json()}")
 
     @override
     def get_formatted_response(self) -> str:

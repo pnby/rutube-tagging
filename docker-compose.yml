@@ -17,6 +17,9 @@ services:
 
   solution:
     container_name: solution
+    runtime: nvidia
+    environment:
+      __mode: "PROD"
     ports:
       - "80:80"
       - "443:443"
