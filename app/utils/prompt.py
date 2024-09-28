@@ -1,5 +1,3 @@
-import json
-
 from app.utils.settings import MODE
 
 class Prompt:
@@ -26,17 +24,12 @@ class Prompt:
         Returns:
             str: The system prompt with available tags.
         """
-        if MODE == "DEV":
-            path = "C:\\Users\\artyom\\PycharmProjects\\ru-tags\\prompts\\system-prompt.json"
-        else:
-            path = "../prompts/system-prompt.json"
 
         tags = self.get_tags()
-        with open(path, mode='r', encoding='utf-8') as f:
-            data = json.load(f)
-            data['prompt'] += "Response format: {'tags': [...]}\nEnsure the output is valid JSON as it will be parsed using `json.loads()` in Python."
-            data['prompt'] += f"Available tags:\n {tags}"
-            return data['prompt']
+        prompt = ""
+        prompt += "\nEnsure the output is valid JSON as it will be parsed using `json.loads()` in Python.\nResponse format: {'tags': [...]}"
+        prompt += f"\nAvailable tags:\n {tags}"
+        return prompt
 
     @staticmethod
     def get_tags() -> str:
