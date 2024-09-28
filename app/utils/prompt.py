@@ -49,8 +49,7 @@ class Prompt:
         """
         text = {"target_text": f"{self.text}"}
         final_prompt = f"""
-        Тебе нужно расскать что происходит в этом 
+        Тебе нужно расскать что происходит в этом тексте
         \n{text}
-        # \nThe set of tags is here, pay attention: {self.get_tags()}"
         """
         return final_prompt
