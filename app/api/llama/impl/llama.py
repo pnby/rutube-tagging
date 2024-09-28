@@ -38,8 +38,9 @@ class Llama(BaseLlama):
             "model": self.model,
             "prompt": self.prompt,
             "stream": self.stream,
+            "format": "json",
             "options": {
-                "temperature": 0.2
+                "temperature": 0
             },
         }
 
