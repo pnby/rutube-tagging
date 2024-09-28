@@ -61,6 +61,7 @@ async def text_to_tags(file: UploadFile = File(...)) -> TagSchema:
     formatted_response = llama.get_formatted_response().replace("'", '"')
     try:
         formatted_response = json.loads(formatted_response)
+        logger.debug(formatted_response)
     except Exception as e:
         logger.warning(f"The LLM response could not be converted to json\n{e}\n{formatted_response}")
     response_text = formatted_response.get('tags', '')
