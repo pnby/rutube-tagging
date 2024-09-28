@@ -11,6 +11,8 @@ from app.utils.settings import ALLOWED_VIDEO_TYPES
 
 router = APIRouter()
 
+tags = Prompt.get_tags()
+
 @router.post("/tags/all/", summary="Get all tags", description="Endpoint to retrieve all tags.")
 async def get_all_tags():
     """
@@ -19,7 +21,7 @@ async def get_all_tags():
     Returns:
         dict: A dictionary containing all tags.
     """
-    return
+    return {"tags": tags}
 
 @router.post("/tags/media/", summary="Extract tags from media file", description="Endpoint to extract tags from a media file.")
 async def text_to_tags(file: UploadFile = File(...)):
