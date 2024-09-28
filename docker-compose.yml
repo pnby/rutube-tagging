@@ -1,6 +1,6 @@
 services:
   ollama:
-    image: onlydole/ollama-mistral
+    image: langchain4j/ollama-mistral
     expose:
       - 11434/tcp
     runtime: nvidia
