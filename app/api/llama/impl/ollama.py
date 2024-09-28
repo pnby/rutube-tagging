@@ -38,6 +38,7 @@ class Ollama(BaseOllama):
             "model": self.model,
             "prompt": self.prompt,
             "stream": self.stream,
+            "raw": True,
             "format": "json",
             "options": {
                 "temperature": 0
