@@ -4,7 +4,7 @@ import os
 from fastapi import APIRouter, HTTPException, File, UploadFile
 
 from app import upload_directory, logger
-from app.api.llama.impl.ollama import Ollama
+from app.api.ollama.impl.ollama import Ollama
 from app.api.stt.impl.stt import SpeechToText
 from app.schemas.tags import TagRawSchema
 from app.utils.prompt import Prompt
