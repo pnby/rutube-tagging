@@ -49,7 +49,7 @@ class Prompt:
         """
         text = {"target_text": f"{self.text}"}
         final_prompt = f"""
-        Тебе нужно расскать что происходит в этом тексте
+        Тебе нужно расскать что происходит в этом тексте на русском языке
         \n{text}
         """
         return final_prompt
