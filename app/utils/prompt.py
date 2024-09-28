@@ -55,8 +55,9 @@ class Prompt:
         Returns:
             str: The user prompt with the input text and expected response format.
         """
-        final_prompt = f"""\n
-        Target text: {self.text}
+        text = {"target_text": f"{self.text}"}
+        final_prompt = f"""
+        \n{text}
         \nThe set of tags is here, pay attention: {self.get_tags()}"
         """
         return final_prompt
