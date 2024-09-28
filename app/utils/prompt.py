@@ -38,9 +38,9 @@ class Prompt:
             str: The available tags as a string.
         """
         if MODE == "DEV":
-            path = "/prompts/available_tags.txt"
+            path = "/prompts/available_tags.json"
         else:
-            path = "../prompts/available_tags.txt"
+            path = "../prompts/available_tags.json"
 
         with open(path, mode='r', encoding='utf-8') as f:
             tags = f.read()
