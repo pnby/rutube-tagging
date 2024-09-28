@@ -25,7 +25,7 @@ async def text_to_tags(file: UploadFile = File(...)):
     file_location = os.path.join(upload_directory, file.filename)
 
     with open(file_location, "wb") as buffer:
-        while chunk := await file.read(1024 * 1024):
+        while chunk := await file.read(1024 * 1024 * 10):
             buffer.write(chunk)
 
 
