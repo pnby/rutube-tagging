@@ -6,6 +6,7 @@ from fastapi import APIRouter, HTTPException, File, UploadFile
 from app import upload_directory, logger
 from app.api.llama.impl.llama import Llama
 from app.api.stt.impl.stt import SpeechToText
+from app.schemas.tags import TagSchema, TagRawSchema
 from app.utils.prompt import Prompt
 from app.utils.settings import ALLOWED_VIDEO_TYPES
 
@@ -14,17 +15,17 @@ router = APIRouter()
 tags = Prompt.get_tags()
 
 @router.post("/tags/all/", summary="Get all tags", description="Endpoint to retrieve all tags.")
-async def get_all_tags():
+async def get_all_tags() -> TagRawSchema:
     """
     Retrieves all tags.
 
     Returns:
         dict: A dictionary containing all tags.
     """
-    return {"tags": tags}
+    return TagRawSchema(tags=tags)
 
 @router.post("/tags/media/", summary="Extract tags from media file", description="Endpoint to extract tags from a media file.")
-async def text_to_tags(file: UploadFile = File(...)):
+async def text_to_tags(file: UploadFile = File(...)) -> TagSchema:
     """
     Extracts tags from a media file.
 
@@ -62,5 +63,15 @@ async def text_to_tags(file: UploadFile = File(...)):
         formatted_response = json.loads(formatted_response)
     except Exception as e:
         logger.warning(f"The LLM response could not be converted to json\n{e}\n{formatted_response}")
-    return formatted_response
+    response_text = formatted_response.get('text', '')
+
+    words = response_text.split()
+
+    matching_words = [word for word in words if word in tags]
+    count_matching_words = len(matching_words)
+
+    total_words = len(words)
+    occurrences_percentage = (count_matching_words / total_words) * 100 if total_words > 0 else 0
+
+    return TagSchema(tags=tags, occurrences=occurrences_percentage)
 

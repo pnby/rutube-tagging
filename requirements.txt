@@ -11,4 +11,6 @@ ffmpeg-python~=0.2.0
 watchfiles~=0.24.0
 attrs~=24.2.0
 aiofiles~=24.1.0
-openai-whisper
+openai-whisper~=20240927
+pydantic~=2.9.2
+torch~=2.4.1
