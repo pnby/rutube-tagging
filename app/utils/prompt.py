@@ -25,7 +25,9 @@ class Prompt:
             str: The system prompt with available tags.
         """
 
-        return None
+        prompt = "You are provided with a text from a video and a large set of tags. Your task is to analyze the text for its main subjects and microthemes, and then match these with the most relevant tags from the provided set. Please sort the tags accordingly."
+        prompt += "\nResponse format: {'tags': [...]}"
+        return prompt
 
     @staticmethod
     def get_tags() -> str:
@@ -53,8 +55,7 @@ class Prompt:
             str: The user prompt with the input text and expected response format.
         """
         tags = self.get_tags()
-        prompt = "You are provided with a text from a video and a large set of tags. Your task is to analyze the text for its main subjects and microthemes, and then match these with the most relevant tags from the provided set. Please sort the tags accordingly."
-        prompt += "\nResponse format: {'tags': [...]}"
+        prompt = ""
         prompt += f"\nThe set of tags is here: {tags}"
         prompt += f"\nTarget text: {self.text}"
         return prompt
