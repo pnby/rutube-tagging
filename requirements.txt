@@ -14,4 +14,3 @@ aiofiles~=24.1.0
 openai-whisper
 pydantic~=2.9.2
 torch~=2.4.1
-transformers==4.24.0
