@@ -42,8 +42,8 @@ class Prompt:
         Returns:
             str: The user prompt with the input text and expected response format.
         """
-        final_prompt = "Ваша задача — присвоить теги следующему тексту и вернуть ответ в формате JSON без комментариев и объяснений. Выходные теги должны соответствовать содержанию текста."
-        final_prompt += "\nФормат ответа: {'tags': [...]}"
-        final_prompt += f"\nЦелевой текст: {self.text}"
-        final_prompt += f"\nНабор тегов приведен здесь, обратите внимание: {self.get_tags()}"
+        final_prompt = "Your task is to assign tags to the following text and return the response in JSON format without comments or explanations. The output tags must match the content of the text."
+        final_prompt += "\nResponse format: {'tags': [...]}"
+        final_prompt += f"\nTarget text: {self.text}"
+        final_prompt += f"\nThe set of tags is given here, please note: {self.get_tags()}"
         return final_prompt
