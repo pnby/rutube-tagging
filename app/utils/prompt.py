@@ -63,7 +63,7 @@ class Prompt:
             str: The user prompt with the input text and expected response format.
         """
         final_prompt = f"""
-        Your task is to assign tags to the following text and return the response in JSON format without comments and explanations. The tag you return should match the tag from the set of available tags. You need to generate as many tags as possible that fit the meaning and will be in the tag set.
+        Your task is to assign tags to the following text and return the response in JSON format without comments and explanations. The tags you return should match the tags from the set of available tags and should be directly relevant to the content of the text. Do not generate tags that are not explicitly mentioned or implied by the text.
 
         Target text: {self.text}
 
