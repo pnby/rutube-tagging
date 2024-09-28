@@ -42,8 +42,3 @@ class Prompt:
 
         """ + "\nФормат ответа: {'tags': [...]}"
         return final_prompt
-
-
-
-obj = Prompt("1")
-print(obj.get_system_prompt())

@@ -1,3 +1,4 @@
+from time import perf_counter
 from typing import override, final, Optional
 
 import aiohttp
@@ -44,8 +45,7 @@ class Llama(BaseLlama):
         if self.system_prompt is not None:
             data["system"] = self.system_prompt
 
-        logger.debug(self.system_prompt)
-
+        start_time = perf_counter()
         async with aiohttp.ClientSession() as session:
             async with session.post(url, json=data) as response:
                 if response.status == 200:
@@ -54,6 +54,9 @@ class Llama(BaseLlama):
                     logger.info("Response from server:", result)
                 else:
                     logger.warning(f"Error: {response.status}\n{await response.json()}")
+
+        for i in range(5):
+            logger.info(f"The LLM response was {perf_counter() - start_time} second")
 
     @override
     def get_formatted_response(self) -> str:

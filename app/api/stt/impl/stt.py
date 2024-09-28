@@ -1,4 +1,5 @@
 import os
+from time import perf_counter
 from typing import override, final
 
 import whisper
@@ -24,9 +25,12 @@ class SpeechToText(BaseSpeechToText):
         if self.wav_file is None:
             raise ValueError("wav_file is not set")
 
+        start_time = perf_counter()
         model = whisper.load_model(self.model)
 
         result = model.transcribe(self.wav_file, language=self.language)
+        for i in range(5):
+            logger.info(f"The full transcription of the video took {perf_counter() - start_time}")
 
         return result['text']
 
