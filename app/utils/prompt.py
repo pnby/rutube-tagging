@@ -63,8 +63,9 @@ class Prompt:
             str: The user prompt with the input text and expected response format.
         """
         final_prompt = f"""
-        Your task is to assign tags to the following text and return the response in JSON format without comments and explanations.
-
+        Your task is to assign tags to the following text and return the response in JSON format without comments and explanations. The tags you return should match the tags from the set of available tags and should be directly relevant to the content of the text. Do not generate tags that are not explicitly mentioned or implied by the text.
+        Ensure the output is valid JSON as it will be parsed using `json.loads()` in Python.
+        
         Target text: {self.text}
 
         """ + "\nResponse format: {'tags': [...]}"
